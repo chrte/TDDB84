@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+</head>
+<body>
+
+This is the package that contains the code base for the creational design patterns lab.
+
+<h2>Introduction</h2>
+<!--
+It is recommended that you use Eclipse in these labs, write the following in the terminal to make it available:<br>
+<code>module add prog/eclipse/3.0.1</code><br>
+<code>module initadd prog/eclipse/3.0.1</code><br><br>
+
+To start eclipse write:<br>
+<code>eclipse & </code><br><br>
+
+To check if there is a newer version available write:<br>
+<code>module avail</code><br>
+to get a list of available modules and then search the list for latest eclipce version.<br>
+<br>
+-->
+Set the String parameter <em>imagePath</em> in <em>Images</em> to the directory (relative to $home) where the copies of the images are located.<br> <br>
+All the names of classes and methods that you as a student have created have to have the prefix 'S_' and the a describing name.<br>
+If you change somewhere other than stated make a comment why you have change there and hand in that class as well.<br><br>
+
+In this lab a number of walls, doors and rooms are combined to a stable using three different creational design patterns. The class that represent the stable is called <em>Stable</em> and to it rooms can be added and to the room four sides can be added. The sides are all subclasses to <em>MapSite</em> please refer to GoF.<br>
+The constructor to a room takes a position, x and y, and the constructor to a wall takes a direction inside a room. A door takes two rooms and places itself between them.<br>
+Be careful with how you construct the stable, because the last added side in a direction in a room replaces old side in that direction.<br>
+It does not have to be the exact same stable created by the different creational design patterns but they all have to fulfill these requirements:<br>
+<ol>
+<li>Two ordinary rooms with at least one door.</li>
+<li>Five horseboxes with one boxdoor each.</li>
+<li>Three rooms in a row that works like a corridor.</li>
+<li>Walls everywhere applicable.</li>
+</ol>
+
+<h2>Usage</h2>
+<p>To choose another construction method choose in the menu, to add a horse press the letter 'h' and to control the person represented by a helmet use the arrow keys.</p>
+
+<h2>Purpose</h2>
+By creating the stable using different creational design patterns you see the patterns stengths and weaknesses. And in the future you will be able to choose between them and use the one that fits best in a given situation.
+
+<h2>Section A</h2>
+
+<h3>Readings</h3>
+The intro pages to creational pattern chapters in GoF p. 81-85, the design pattern Factory Method starting at p. 107 and the lectures.
+
+<h3>Instructions</h3>
+Create a stable according to the requirements using the design pattern Factory Method that uses the classes in the code base e.g. <em>Room</em> and <em>BoxDoor</em>.
+
+<h3>Where to edit</h3>
+Write the body to the method <em>factoryConstruction</em> in <em>StablePanel</em>. <!--and create a few classes of your own. Do not forget the 'S_' prefix.-->
+
+<h3>Hints</h3>
+Look in the method <em>defaultConstruction</em> in <em>StablePanel</em> to see how the classes in the code base is used there.
+
+<h2>Section B</h2>
+
+<h3>Readings</h3>
+In Gof about Builder on p. 97-107.
+
+<h3>Instructions</h3>
+Create a stable using the design pattern Builder.
+
+<h3>Where to edit</h3>
+Write the body to the method <em>builderConstruction</em> in <em>StablePanel</em> and create one or two own classes.
+
+<h3>Hints</h3>
+Stable is a singleton, adapt the Builder accordingly. <!--Make sure that the parameter <em>Stable</em> is set to the new stable build by the Builder.--> The calls to the Builder to build different parts of the stable can be done in the method <em>builderConstruction</em>.
+
+<h2>Section C</h2>
+
+<h3>Readings</h3>
+The lectures and the chapter about Prototype in GoF on p. 117-126.
+
+<h3>Instructions</h3>
+Create a stable that, as much possible, is created using prototypes and the design pattern Prototype. Look at the requirements on the stable to find suitable prototypes.
+
+<h3>Where to edit</h3>
+Write the body to the method <em>builderConstruction</em> in <em>StablePanel</em>. Create the classes in the Prototype pattern and somewhere to store the created prototypes.
+
+<h3>Hints</h3>
+Use the patterns in the prior labs the create the prototypes, think about how and who creates the prototypes.<br>
+Is the prototype storage suitable as a Singleton?
+
+<h2>Hand in</h2>
+Hand in all classes (.java-files only) that you have created and the class <em>StablePanel</em>.<br>
+If you have changed in other files send them as well.
+
+
+</body>
+</html>
