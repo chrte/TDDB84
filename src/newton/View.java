@@ -69,7 +69,7 @@ class View extends Canvas implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		this.handleNewState((ModelState) arg);
-		
+
 	}
 	// END OF YOUR CODE
 

@@ -64,10 +64,10 @@ class Model extends Observable implements Runnable {
 
 		// YOUR CODE HERE
 		// The model has a new state. What does it do with it?	
-		
+
 		this.setChanged();
 		this.notifyObservers(newState);
-				
+
 
 		//		this.
 		// END OF YOUR CODE
