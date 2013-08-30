@@ -3,14 +3,16 @@
  */
 package newton;
 
+import java.util.Observable;
+
 /**
  * @author srn
  *
  */
 // YOUR CODE HERE
 // replace "extends Object" with something more suitable
-class Model extends Object implements Runnable {
-// END OF YOUR CODE
+class Model extends Observable implements Runnable {  
+	// END OF YOUR CODE
 	protected Coord x0, v0, x1, v1;
 	protected double m0, m1;
 	protected static final double h = 0.001;
@@ -18,7 +20,7 @@ class Model extends Object implements Runnable {
 	private static final long SLEEP_INT = 10;
 	protected boolean suspended;
 	protected boolean isRunning;
-		
+
 	Model(Coord x0, Coord v0, Coord x1, Coord v1, double m0, double m1) {
 		this.x0 = x0;
 		this.v0 = v0;
@@ -26,11 +28,11 @@ class Model extends Object implements Runnable {
 		this.v1 = v1;
 		this.m0 = m0;
 		this.m1 = m1;
-		
+
 		isRunning = true;
 		suspended = true;
 	}
-	
+
 	public void run() {
 		double[] x00 = new double[3];
 		double[] x10 = new double[3];
@@ -42,7 +44,7 @@ class Model extends Object implements Runnable {
 		double[] v1  = new double[3];
 		double t;
 		int k;
-		
+
 		t = 0.0;
 		x00[0] = this.x0.x;
 		x00[1] = this.x0.y;
@@ -56,14 +58,20 @@ class Model extends Object implements Runnable {
 		v10[0] = this.v1.x;
 		v10[1] = this.v1.y;
 		v10[2] = this.v1.z;
-		
+
 		ModelState newState = new ModelState(new Coord(x00[0], x00[1]),
-				                             new Coord(x10[0], x10[1]));
+				new Coord(x10[0], x10[1]));
 
 		// YOUR CODE HERE
-		// The model has a new state. What does it do with it?
-		// END OF YOUR CODE
+		// The model has a new state. What does it do with it?	
 		
+		this.setChanged();
+		this.notifyObservers(newState);
+				
+
+		//		this.
+		// END OF YOUR CODE
+
 		while (isRunning) {
 			synchronized (this) {
 				while (suspended)
@@ -78,11 +86,12 @@ class Model extends Object implements Runnable {
 			}
 
 			newState = new ModelState(new Coord(x00[0], x00[1]),
-                    	                          new Coord(x10[0], x10[1]));
+					new Coord(x10[0], x10[1]));
 			// YOUR CODE HERE
 			// The model has a new state. What does it do with it?
-			// END OF YOUR CODE
-			
+			this.setChanged();
+			this.notifyObservers(newState);
+
 			try {
 				// just lose some time such that the animation is not too fast
 				Thread.sleep(SLEEP_INT);
@@ -90,20 +99,20 @@ class Model extends Object implements Runnable {
 			}
 		}
 	}
-	
+
 	synchronized void suspend() {
 		suspended = true;
 	}
-	
+
 	synchronized void resume() {
 		suspended = false;
 		notify();
 	}
-	
+
 	void destroy() {
 		isRunning = false;
 	}
-	
+
 	boolean isSuspended() {
 		return suspended;
 	}
