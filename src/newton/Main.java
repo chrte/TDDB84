@@ -6,7 +6,7 @@ package newton;
 import java.applet.Applet;
 
 /**
- * @author sorma
+ * @author sorma modified by chrte707 and hento581
  *
  */
 public class Main extends Applet {
