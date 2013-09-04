@@ -40,9 +40,12 @@ public class Images {
 	/**
 	 * Path to images from ~
 	 */
-	public String imagePath = "workspace/reallabs/Lab2/Images/";//"www-pub/lab2/images/";
+	String tempString = "C:\\Users\\Christian\\git\\TDDB84\\Images\\";
+	
+	public String imagePath = tempString.replace("\\", "/");
 	
 	private Images (StableApplet a) {
+		System.out.println("imagePath is" +imagePath);
 		applet = a;		
 		tracker = new MediaTracker(applet);
 	}
@@ -79,7 +82,8 @@ public class Images {
 			/**
 			 * Try load image on the local machine.
 			 */
-			String fullImagePath = "/home/" + System.getProperty("user.name") + "/" + imagePath + imageName;
+//			String fullImagePath = "/home/" + System.getProperty("user.name") + "/" + imagePath + imageName;;
+			String fullImagePath = imagePath+imageName;  //Changed becasue working on windows machine
 			dest = (new ImageIcon(fullImagePath)).getImage();
 		} catch (Exception e) {
 			/**
@@ -88,6 +92,7 @@ public class Images {
 			dest = applet.getImage(applet.getCodeBase(), "images/" + imageName);
 		}
 		if ((-1 == dest.getWidth(null)) || (-1 == dest.getWidth(null))) {
+			System.out.println();
 			System.out.println(imageName + "not found");
 			return dest;
 		}
