@@ -40,12 +40,11 @@ public class Images {
 	/**
 	 * Path to images from ~
 	 */
-	String tempString = "C:\\Users\\Christian\\git\\TDDB84\\Images\\";
-	
+	String tempString = "C:\\Users\\Christian\\git\\TDDB84\\Images\\";  //TODO: This needs to be changed in order to work in a specific etup
 	public String imagePath = tempString.replace("\\", "/");
 	
 	private Images (StableApplet a) {
-		System.out.println("imagePath is" +imagePath);
+		System.out.println("imagePath is" +imagePath); 
 		applet = a;		
 		tracker = new MediaTracker(applet);
 	}
