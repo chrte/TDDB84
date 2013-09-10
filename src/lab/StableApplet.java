@@ -24,7 +24,7 @@ public class StableApplet extends JApplet implements ActionListener, KeyListener
 	 */
 	public void init() {
 
-		this.setSize(400, 400);
+		this.setSize(800, 800);
 
 		makeMenu();
 
@@ -33,7 +33,7 @@ public class StableApplet extends JApplet implements ActionListener, KeyListener
 
 		Images.setApplet(this);
 
-		stablePanel.defaultConstruction();
+		stablePanel.factoryConstruction();
 
 		addKeyListener(this);
 
@@ -60,7 +60,7 @@ public class StableApplet extends JApplet implements ActionListener, KeyListener
 		setJMenuBar(myMenuBar);
 
 		chooseMenu = new JMenu("Creator");
-		myMenuBar.add(chooseMenu);
+		myMenuBar.add(chooseMenu);	
 
 		defaultItem = new JMenuItem("Default");
 		defaultItem.addActionListener(this);

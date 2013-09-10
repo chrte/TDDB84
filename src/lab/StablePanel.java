@@ -6,7 +6,11 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Vector;
+
 import javax.swing.JPanel;
+
+
 
 /**
  * This is the class where the students should make changes.
@@ -24,7 +28,7 @@ public class StablePanel extends JPanel {
 
 	public StablePanel(StableApplet a) {
 
-		dimension = new Dimension(400, 400);
+		dimension = new Dimension(800, 800);
 		setMinimumSize(dimension);
 		offscreen = a.createImage((int)dimension.getWidth(), (int)dimension.getHeight());
 		buffer = offscreen.getGraphics();
@@ -109,11 +113,40 @@ public class StablePanel extends JPanel {
 	 * Construction is made using an Factory.
 	 */
 	public void factoryConstruction() {
+		
+		StableFactory stable = new StableFactory();
+		
+		Room room1 = stable.createRoom(0,1,"RightOpen");
+		Room room2 = stable.createRoom(1,1,"NoWalls");
+		Room room3 = stable.createRoom(2,1,"NoWalls");
+		Room room4 = stable.createRoom(0,0,"BottomOpen");
+		Room room5 = stable.createRoom(0,2,"TopOpen");
+		
+		Room horseBox1 = stable.createRoom(3,1,"LeftOpen");
+		Room horseBox2 = stable.createRoom(2,0,"BottomOpen");
+		Room horseBox3 = stable.createRoom(1,0,"BottomOpen");
+		Room horseBox4 = stable.createRoom(2,2,"TopOpen");
+		Room horseBox5 = stable.createRoom(1,2,"TopOpen");
+		
+		BoxDoor boxDoor1 = (BoxDoor) stable.createDoor(room3, horseBox1, "box");
+		BoxDoor boxDoor2 = (BoxDoor) stable.createDoor(room3, horseBox2, "box");
+		BoxDoor boxDoor3 = (BoxDoor) stable.createDoor(room3, horseBox4, "box");
+		BoxDoor boxDoor4 = (BoxDoor) stable.createDoor(room2, horseBox3, "box");
+		BoxDoor boxDoor5 = (BoxDoor) stable.createDoor(room2, horseBox5, "box");
+		
+		Door door1 = stable.createDoor(room1, room4, "door");
+		Door door2 = stable.createDoor(room1, room5, "door");
+		
+		
+		room1.setSide(room2);
+		room2.setSide(room1);		
+				
+		room2.setSide(room3);
+		room3.setSide(room2);
 
-		// YOUR CODE HERE
-		// END OF YOUR CODE
 	}
 
+	
 	/**
 	 * Construction using the Builder pattern.
 	 */
