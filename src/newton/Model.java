@@ -1,27 +1,20 @@
-/**
- * 
- */
 package newton;
 
-import java.util.Observable;
-
-/**
- * @author srn
- *
- */
 // YOUR CODE HERE
-// replace "extends Object" with something more suitable
-class Model extends Observable implements Runnable {  
-	// END OF YOUR CODE
+// Replace "extends Object" with something more suitable.
+class Model extends Object implements Runnable {
+// END OF YOUR CODE
+
 	protected Coord x0, v0, x1, v1;
 	protected double m0, m1;
 	protected static final double h = 0.001;
 	protected static final int STEPS = 5000;
 	private static final long SLEEP_INT = 10;
 	protected boolean suspended;
-	protected boolean isRunning;
+	protected boolean running;
 
 	Model(Coord x0, Coord v0, Coord x1, Coord v1, double m0, double m1) {
+
 		this.x0 = x0;
 		this.v0 = v0;
 		this.x1 = x1;
@@ -29,11 +22,12 @@ class Model extends Observable implements Runnable {
 		this.m0 = m0;
 		this.m1 = m1;
 
-		isRunning = true;
+		running = true;
 		suspended = true;
 	}
 
 	public void run() {
+
 		double[] x00 = new double[3];
 		double[] x10 = new double[3];
 		double[] v00 = new double[3];
@@ -59,20 +53,14 @@ class Model extends Observable implements Runnable {
 		v10[1] = this.v1.y;
 		v10[2] = this.v1.z;
 
-		ModelState newState = new ModelState(new Coord(x00[0], x00[1]),
-				new Coord(x10[0], x10[1]));
+		ModelState newState = new ModelState(
+			new Coord(x00[0], x00[1]), new Coord(x10[0], x10[1]));
 
 		// YOUR CODE HERE
-		// The model has a new state. What does it do with it?	
-
-		this.setChanged();
-		this.notifyObservers(newState);
-
-
-		//		this.
+		// The model has a new state. What does it do with it?
 		// END OF YOUR CODE
 
-		while (isRunning) {
+		while (running) {
 			synchronized (this) {
 				while (suspended)
 					try {
@@ -80,6 +68,7 @@ class Model extends Observable implements Runnable {
 					} catch (InterruptedException e) {
 					}
 			}
+
 			for (k = 0; k < STEPS / 2; k++, t += 2.0 * h) {
 				DifEqSolver.solve(x00, v00, x10, v10, m0, m1, t, h, x0, v0, x1, v1);
 				DifEqSolver.solve(x0, v0, x1, v1, m0, m1, t + h, h, x00, v00, x10, v10);
@@ -87,13 +76,13 @@ class Model extends Observable implements Runnable {
 
 			newState = new ModelState(new Coord(x00[0], x00[1]),
 					new Coord(x10[0], x10[1]));
+
 			// YOUR CODE HERE
 			// The model has a new state. What does it do with it?
-			this.setChanged();
-			this.notifyObservers(newState);
+			// END OF YOUR CODE
 
 			try {
-				// just lose some time such that the animation is not too fast
+				// Just to lose some time so that the animation is not too fast.
 				Thread.sleep(SLEEP_INT);
 			} catch (InterruptedException e) {
 			}
@@ -101,19 +90,23 @@ class Model extends Observable implements Runnable {
 	}
 
 	synchronized void suspend() {
+
 		suspended = true;
 	}
 
 	synchronized void resume() {
+
 		suspended = false;
 		notify();
 	}
 
-	void destroy() {
-		isRunning = false;
+	void stop() {
+
+		running = false;
 	}
 
 	boolean isSuspended() {
+
 		return suspended;
 	}
 }

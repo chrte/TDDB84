@@ -1,28 +1,11 @@
-/**
- * 
- */
 package newton;
 
 import java.applet.Applet;
 
-/**
- * @author sorma modified by chrte707 and hento581
- *
- */
 public class Main extends Applet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7680203860191253769L;
 
-// 	static {
-// 	    System.loadLibrary("rk");
-// 	}
-
-	/**
-	 * 
-	 */
 	private Model model;
 	private View  view;
 	private static final double DFLT_x0x = 100.0;
@@ -35,15 +18,17 @@ public class Main extends Applet {
 	private static final double DFLT_v1y = -1.29172365465683100186;
 	private static final double DFLT_m0  = 1.0e13 * 1.4;
 	private static final double DFLT_m1  = 1.0e13;
-	
+
 	private Thread thread;
-	
-	public Main() {	
+
+	public Main() {
+
 	}
-	
-	public void init() {	
+
+	public void init() {
+
 		double x0x, x0y, v0x, v0y, x1x, x1y, v1x, v1y, m0, m1;
-		
+
 		try {
 			x0x = Double.parseDouble(getParameter("x0x"));
 		} catch (RuntimeException np) {
@@ -94,27 +79,29 @@ public class Main extends Applet {
 		} catch (RuntimeException e) {
 			m1 = DFLT_m1;
 		}
-		
+
 		model = new Model(new Coord(x0x, x0y), new Coord(v0x, v0y),
-				  new Coord(x1x, x1y), new Coord(v1x, v1y),
-				  m0, m1);
+			new Coord(x1x, x1y), new Coord(v1x, v1y), m0, m1);
 		view = new View(model);
 		add(view);
+		resize(view.width, view.height);
 		thread = new Thread(model);
 		thread.start();
 	}
-	
+
 	public void start() {
+
 		model.resume();
 	}
-	
+
 	public void stop() {
+
 		model.suspend();
 	}
-	
+
 	public void destroy() {
-		if (model.isSuspended())
-			model.resume();
-		model.destroy();
+
+		if (model.isSuspended()) model.resume();
+		model.stop();
 	}
 }
