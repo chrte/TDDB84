@@ -11,6 +11,7 @@ class DifEqSolver {
 	private static double q[] = new double[6];
 	private static double x0[] = new double[6];
 	private static double x1[] = new double[6];
+	private int i = 5;
 
 	private static double rky0(double[] x, double t, double m0, double m1) {
 
