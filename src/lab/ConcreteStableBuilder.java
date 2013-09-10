@@ -7,6 +7,7 @@ public class ConcreteStableBuilder extends StableBuilder {
 	@Override
 	public void buildRoom(int x, int y) {
 		stable.addRoom(new Room(x,y));
+		this.buildWalls(x, y);
 	}
 
 	@Override
@@ -16,7 +17,7 @@ public class ConcreteStableBuilder extends StableBuilder {
 		
 		if (room1 != null && room2 != null)
 		{
-			Door door = null;	
+			Door door = null;
 			if (type.equals("box")) {
 				door = new BoxDoor(room1,room2);
 				room1.setSide(door);
@@ -26,8 +27,7 @@ public class ConcreteStableBuilder extends StableBuilder {
 				door = new Door(room1,room2);
 				room1.setSide(door);
 				room2.setSide(door);
-			}	
-			
+			}				
 		}		
 	}
 
@@ -52,8 +52,6 @@ public class ConcreteStableBuilder extends StableBuilder {
 				room1.setSide(room2);
 				room2.setSide(room1);		
 			
-		}	
-		
+		}			
 	}
-
 }
