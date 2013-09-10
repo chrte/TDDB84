@@ -42,4 +42,18 @@ public class ConcreteStableBuilder extends StableBuilder {
 		}
 	}
 
+	@Override
+	public void setSides(int x1, int y1, int x2, int y2) {
+		Room room1 = stable.getRoom(x1, y1);
+		Room room2 = stable.getRoom(x2, y2);
+		
+		if (room1 != null && room2 != null)
+		{
+				room1.setSide(room2);
+				room2.setSide(room1);		
+			
+		}	
+		
+	}
+
 }
