@@ -7,11 +7,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.util.Enumeration;
+import java.util.Observable;
+import java.util.Observer;
 
 // YOUR CODE HERE
 // The View plays a particular role in the Subject-Observer relationship.
 // Therefore, the View will implement a particular interface.
-class View extends Canvas {
+class View extends Canvas implements Observer {
 // END OF YOUR CODE
 
 	private static final long serialVersionUID = 1L;
@@ -27,8 +29,9 @@ class View extends Canvas {
 		height = DFLT_HEIGHT;
 		trajectory1 = new Trajectory();
 		trajectory2 = new Trajectory();
-
+	
 		// YOUR CODE HERE
+		model.addObserver(this);
 		// Let the Subject know that we want to observe it.
 		// END OF YOUR CODE
 	}
@@ -41,6 +44,7 @@ class View extends Canvas {
 		trajectory2 = new Trajectory();
 
 		// YOUR CODE HERE
+		model.addObserver(this);
 		// Let the Subject know that we want to observe it.
 		// END OF YOUR CODE
 	}
@@ -66,9 +70,16 @@ class View extends Canvas {
 	}
 
 	// YOUR CODE HERE
+
+
 	// Put here the method that implements the interface that
 	// you added when you declared the class View.
 	// This method will just call handleNewState.
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		this.handleNewState((ModelState) arg1);
+		
+	}
 	// END OF YOUR CODE
 
 	private void paint1(Graphics g, Trajectory trajectory) {
@@ -112,4 +123,5 @@ class View extends Canvas {
 		paint(g2);
 		g.drawImage(im, 0, 0, this);
 	}
+
 }

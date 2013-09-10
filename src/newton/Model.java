@@ -1,8 +1,10 @@
 package newton;
 
+import java.util.Observable;
+
 // YOUR CODE HERE
 // Replace "extends Object" with something more suitable.
-class Model extends Object implements Runnable {
+class Model extends Observable implements Runnable {
 // END OF YOUR CODE
 
 	protected Coord x0, v0, x1, v1;
@@ -57,6 +59,8 @@ class Model extends Object implements Runnable {
 			new Coord(x00[0], x00[1]), new Coord(x10[0], x10[1]));
 
 		// YOUR CODE HERE
+		this.setChanged();
+		this.notifyObservers(newState);
 		// The model has a new state. What does it do with it?
 		// END OF YOUR CODE
 
@@ -78,6 +82,8 @@ class Model extends Object implements Runnable {
 					new Coord(x10[0], x10[1]));
 
 			// YOUR CODE HERE
+			this.setChanged();
+			this.notifyObservers(newState);
 			// The model has a new state. What does it do with it?
 			// END OF YOUR CODE
 
