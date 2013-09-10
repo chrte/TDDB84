@@ -4,11 +4,11 @@ public abstract class StableBuilder {
 	
 	protected Stable stable;
 
-	 public abstract void buildRooms();
+	 public abstract void buildRoom(int x, int y);
 	 
-	  public abstract void buildDoors();
+	  public abstract void buildDoors(int x1, int y1, int x2, int y2, String type);
 	 
-	  public abstract void buildWalls();
+	  public abstract void buildWalls(int x, int y);
 	 
 	  public void buildStable()
 	  {
