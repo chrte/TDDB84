@@ -193,6 +193,7 @@ public class StablePanel extends JPanel {
 		// YOUR CODE HERE
 		S_StablePrototypeFactory<Room> roomProt = new S_StablePrototypeFactory<Room>(new Room(0,0));  //TODO: Ok to do like this= with the parameters ?
 		S_StablePrototypeFactory<Wall> wallProt = new S_StablePrototypeFactory<Wall>(new Wall(0));  //TODO, OK to do this with parameters????
+		
 
 		Room room = null;
 		Wall wall;
@@ -223,20 +224,28 @@ public class StablePanel extends JPanel {
 		//creating some boxdoor
 		S_StablePrototypeFactory<BoxDoor> boxDoorProt = new S_StablePrototypeFactory<BoxDoor>(new BoxDoor(room, room));
 		BoxDoor boxDoor;
+		S_StablePrototypeFactory<Door> doorProto = new S_StablePrototypeFactory<Door>(new Door(room, room));
+		Door door;
 		for (int i = 0;i<HEIGHT; i++){
 			for (int j = 0; j<LENGTH-1;j++){
-
+				if( j==0 && i == 0){
+					door = doorProto.clone();
+					door.move(roomArray[i][j], roomArray[i][j+1]);
+					roomArray[i][j].setSide(door);
+					roomArray[i][j+1].setSide(door);
+				}
+				else {
 				boxDoor = boxDoorProt.clone();
 				boxDoor.move(roomArray[i][j], roomArray[i][j+1]);
 				roomArray[i][j].setSide(boxDoor);
 				roomArray[i][j+1].setSide(boxDoor);
+				}
 
 			}
 		}
 
 		//And then we need a corridor
-		S_StablePrototypeFactory<Door> doorProto = new S_StablePrototypeFactory<Door>(new Door(room, room));
-		Door door;
+	
 	
 		roomArray[0][1].setSide(roomArray[1][1]);
 		roomArray[1][1].setSide(roomArray[0][1]);
