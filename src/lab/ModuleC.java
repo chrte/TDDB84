@@ -1,8 +1,4 @@
-/*
- * Created on 2005-mar-18
- *
- */
-package lab3Source;
+package lab;
 
 import java.awt.Color;
 import java.awt.Rectangle;
@@ -11,40 +7,40 @@ import java.util.Iterator;
 
 /**
  * Module that make the bonuses move
+ *
  * @author Peter Sunnergren
  */
-
 public class ModuleC {
 
 	private class MovingRectangle extends Rectangle {
+
+		private static final long serialVersionUID = 1L;
 		public int speedX;
 		public int speedY;
+
 		public MovingRectangle(Rectangle r, int speedX, int speedY) {
-			super(r); 
+
+			super(r);
 			this.speedX = speedX;
 			this.speedY = speedY;
 		}
 	}
-	
+
 	/**
-	 * Puts the bonuses in the screen.
-	 * Actually it replaces all occurrences of Rectangle in the body with a subclass of Rectangle
+	 * Puts the bonuses in the screen. Actually it replaces all occurrences of
+	 * Rectangle in the body with a subclass of Rectangle.
+	 *
 	 * @param bonuses
 	 */
-	public void putBonus(ArrayList bonuses) {
-		Iterator iter = bonuses.iterator();
+	public void putBonus(ArrayList<Rectangle> bonuses) {
+
+		Iterator<Rectangle> iter = bonuses.iterator();
+
 		while (iter.hasNext()) {
-			Object o = iter.next();
-			if (Rectangle.class == o.getClass()) {
-				bonuses.set(bonuses.indexOf(o), 
-						new MovingRectangle((Rectangle)o, (int)Math.round(Math.random()*10), (int)Math.round(Math.random()*10)));
-			}
-		}
-		
-		iter = bonuses.iterator();
-		while (iter.hasNext()) {
-			MovingRectangle m = (MovingRectangle)iter.next();
-			
+			Rectangle r = iter.next();
+			MovingRectangle m = new MovingRectangle(r,
+				(int)Math.round(Math.random()*10), (int)Math.round(Math.random()*10));
+
 			if (m.x + m.speedX < 0) {
 				m.speedX = -m.speedX;
 			}
