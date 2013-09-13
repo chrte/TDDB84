@@ -237,17 +237,37 @@ public class StablePanel extends JPanel {
 		//And then we need a corridor
 		S_StablePrototypeFactory<Door> doorProto = new S_StablePrototypeFactory<Door>(new Door(room, room));
 		Door door;
-		door = doorProto.clone();
-		door.move(roomArray[0][1], roomArray[1][1]);
-		roomArray[0][1].setSide(door);
-		roomArray[1][1].setSide(door);
+	
+		roomArray[0][1].setSide(roomArray[1][1]);
+		roomArray[1][1].setSide(roomArray[0][1]);
 
+		roomArray[1][1].setSide(roomArray[2][1]);
+		roomArray[2][1].setSide(roomArray[1][1]);
+
+
+		
+		//Here is Henriks crazy room, created by chrte
+		
+		room = roomProt.clone();
+		room.move(3, 1);
+		wall = wallProt.clone();
+		wall.orientate(KeyEvent.VK_LEFT);
+		room.setSide(wall);
+		wall = wallProt.clone();
+		wall.orientate(KeyEvent.VK_RIGHT);
+		room.setSide(wall);
+		wall = wallProt.clone();
+		wall.orientate(KeyEvent.VK_UP);
+		room.setSide(wall);
+		wall = wallProt.clone();
+		wall.orientate(KeyEvent.VK_DOWN);
+		room.setSide(wall);
+		Stable.instance().addRoom(room);
+		
 		door = doorProto.clone();
-		door.move(roomArray[1][1], roomArray[2][1]);
-		roomArray[1][1].setSide(door);
+		door.move(roomArray[2][1], room);
 		roomArray[2][1].setSide(door);
-
-
+		room.setSide(door);
 
 		// END OF YOUR CODE
 	}
