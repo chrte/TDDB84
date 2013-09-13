@@ -2,7 +2,7 @@ package lab;
 
 import java.awt.event.KeyEvent;
 
-public class S_ConcreteStableBuilder extends StableBuilder {
+public class S_ConcreteStableBuilder extends S_StableBuilder {
 
 	@Override
 	public void buildRoom(int x, int y) {

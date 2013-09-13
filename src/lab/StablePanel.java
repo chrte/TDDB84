@@ -152,7 +152,7 @@ public class StablePanel extends JPanel {
 	 */
 	public void builderConstruction() {
 
-		StableBuilder stable = new S_ConcreteStableBuilder();
+		S_StableBuilder stable = new S_ConcreteStableBuilder();
 		stable.buildStable();
 		
 		stable.buildRoom(0, 1);

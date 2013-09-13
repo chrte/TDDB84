@@ -1,6 +1,6 @@
 package lab;
 
-public abstract class StableBuilder {
+public abstract class S_StableBuilder {
 	
 	protected Stable stable;
 
