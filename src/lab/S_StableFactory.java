@@ -2,7 +2,7 @@ package lab;
 
 import java.awt.event.KeyEvent;
 
-public class StableFactory{
+public class S_StableFactory{
 	
 	protected Room createRoom(int x, int y, String type) {
 		Room room = null;

@@ -114,7 +114,7 @@ public class StablePanel extends JPanel {
 	 */
 	public void factoryConstruction() {
 		
-		StableFactory stable = new StableFactory();
+		S_StableFactory stable = new S_StableFactory();
 		
 		Room room1 = stable.createRoom(0,1,"RightOpen");
 		Room room2 = stable.createRoom(1,1,"NoWalls");
@@ -152,7 +152,7 @@ public class StablePanel extends JPanel {
 	 */
 	public void builderConstruction() {
 
-		StableBuilder stable = new ConcreteStableBuilder();
+		StableBuilder stable = new S_ConcreteStableBuilder();
 		stable.buildStable();
 		
 		stable.buildRoom(0, 1);
@@ -189,6 +189,8 @@ public class StablePanel extends JPanel {
 	public void prototypeConstruction() {
 
 		// YOUR CODE HERE
+		S_StablePrototypeFactory<Room> roomProt = new S_StablePrototypeFactory<Room>();
+		S_StablePrototypeFactory<Wall> wallProt = new S_StablePrototypeFactory<Wall>();
 		// END OF YOUR CODE
 	}
 
