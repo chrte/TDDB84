@@ -159,6 +159,9 @@ public class Snake implements Runnable {
 			direction = controller.getDirection();
 
 		// YOUR CODE HERE
+		controller = new ControllerKey();
+		
+		controller.setDirection(direction);
 		// Create the new controller, set the old direction to
 		// the new controller.
 	}
