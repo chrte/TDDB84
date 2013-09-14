@@ -197,6 +197,8 @@ public class Snake implements Runnable {
 		if (renderer != null) renderer.stop();
 
 		// YOUR CODE HERE
+		renderer = new Graphics3DAdapter();
+		renderer.setSnakeColor(Color.blue);
 		// Create the new renderer.
 		// Initialize the color of the snake.
 		// Otherwise, it is null and you'll get a NullPointerException.
