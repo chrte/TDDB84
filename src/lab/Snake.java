@@ -211,6 +211,8 @@ public class Snake implements Runnable {
 	public void setABCGraphics() {
 
 		if (renderer != null) renderer.stop();
+		renderer = new S_GraphicsABCFacade();
+		
 
 		// YOUR CODE HERE
 		// Create the new renderer.
