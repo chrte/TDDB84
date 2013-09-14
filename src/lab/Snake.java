@@ -211,10 +211,12 @@ public class Snake implements Runnable {
 	public void setABCGraphics() {
 
 		if (renderer != null) renderer.stop();
-		renderer = new S_GraphicsABCFacade();
+		
 		
 
 		// YOUR CODE HERE
+		renderer = new S_GraphicsABCFacade();
+		renderer.setSnakeColor(Color.blue);
 		// Create the new renderer.
 		// Initialize the color of the snake.
 		// Otherwise, it is null and you'll get a NullPointerException.
