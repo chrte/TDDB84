@@ -29,6 +29,7 @@ import javax.swing.JPopupMenu;
 public class ShapeApplet extends JApplet implements MouseListener, ActionListener, KeyListener {
 	private ShapePanel panel;
 	private static JLabel outputLabel;
+	int i = 5;
 	
 	/**
 	 * Sets up the background for the shapes.
