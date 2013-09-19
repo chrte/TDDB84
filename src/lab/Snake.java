@@ -215,7 +215,7 @@ public class Snake implements Runnable {
 		
 
 		// YOUR CODE HERE
-		renderer = new S_GraphicsABCFacade();
+		renderer = new ABCFacade();
 		renderer.setSnakeColor(Color.blue);
 		// Create the new renderer.
 		// Initialize the color of the snake.

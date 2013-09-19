@@ -1,20 +1,58 @@
 package lab;
 
-// YOUR CODE HERE
-// Extends? Implements?
-public class ABCFacade {
+import java.awt.Color;
+import java.awt.Rectangle;
+import java.util.AbstractList;
+import java.util.ArrayList;
 
-	private ModuleA a;
-	private ModuleB b;
-	private ModuleC c;
+public class ABCFacade implements Renderer {
 
-	public ABCFacade() {
+	private ModuleA moduleA;
+	private ModuleB moduleB;
+	private ModuleC moduleC;
 
-		a = new ModuleA();
-		b = new ModuleB();
-		c = new ModuleC();
-		new Thread(a).start();
+	public ABCFacade(){
+		moduleA = new ModuleA();
+		moduleB = new ModuleB();
+		moduleC = new ModuleC();
+		new Thread(moduleA).start();
 	}
-	// YOUR CODE HERE
-	// Overwrite some methods that you inherit/implement.
+
+	@Override
+	public void putBackground() {
+		moduleA.drawBackground();
+
+	}
+
+	@Override
+	public void putBody(AbstractList<Rectangle> body) {
+		moduleB.drawSnake(body);
+
+	}
+
+	@Override
+	public void setSnakeColor(Color color) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void putBonus(AbstractList<Rectangle> bonus) {
+		ArrayList<Rectangle> bonuses = (ArrayList<Rectangle>) bonus;
+		moduleC.putBonus(bonuses);
+
+	}
+
+	@Override
+	public void outside() {
+
+
+	}
+
+	@Override
+	public void stop() {
+		moduleA.stop();
+
+	}
+
 }
