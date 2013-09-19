@@ -33,7 +33,7 @@ public class StableApplet extends JApplet implements ActionListener, KeyListener
 
 		Images.setApplet(this);
 
-		stablePanel.builderConstruction();
+		stablePanel.defaultConstruction();
 
 		addKeyListener(this);
 
