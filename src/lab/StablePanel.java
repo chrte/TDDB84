@@ -116,23 +116,66 @@ public class StablePanel extends JPanel {
 
 		S_StableFactory stable = new S_StableFactory();
 
-		Room room1 = stable.createRoom(0,1,"RightOpen");
-		Room room2 = stable.createRoom(1,1,"NoWalls");
-		Room room3 = stable.createRoom(2,1,"NoWalls");
-		Room room4 = stable.createRoom(0,0,"BottomOpen");
-		Room room5 = stable.createRoom(0,2,"TopOpen");
+		Room room1 = stable.createRoom(0, 1);
+		room1.setSide(new Wall(KeyEvent.VK_UP));
+		room1.setSide(new Wall(KeyEvent.VK_LEFT));			
+		room1.setSide(new Wall(KeyEvent.VK_DOWN));	
+		Stable.instance().addRoom(room1);
 
-		Room horseBox1 = stable.createRoom(3,1,"LeftOpen");
-		Room horseBox2 = stable.createRoom(2,0,"BottomOpen");
-		Room horseBox3 = stable.createRoom(1,0,"BottomOpen");
-		Room horseBox4 = stable.createRoom(2,2,"TopOpen");
-		Room horseBox5 = stable.createRoom(1,2,"TopOpen");
+		Room room2 = stable.createRoom(1,1);
+		Stable.instance().addRoom(room2);
+		Room room3= stable.createRoom(2,1);
+		Stable.instance().addRoom(room3);
+		
+		Room room4=stable.createRoom(0,0);
+		room4.setSide(new Wall(KeyEvent.VK_UP));
+		room4.setSide(new Wall(KeyEvent.VK_RIGHT));			
+		room4.setSide(new Wall(KeyEvent.VK_LEFT));	
+		Stable.instance().addRoom(room4);
+		Room room5=stable.createRoom(0,2);
+		room5.setSide(new Wall(KeyEvent.VK_LEFT));
+		room5.setSide(new Wall(KeyEvent.VK_RIGHT));			
+		room5.setSide(new Wall(KeyEvent.VK_DOWN));	
+		Stable.instance().addRoom(room5);
 
-		BoxDoor boxDoor1 = (BoxDoor) stable.createDoor(room3, horseBox1, "box");
-		BoxDoor boxDoor2 = (BoxDoor) stable.createDoor(room3, horseBox2, "box");
-		BoxDoor boxDoor3 = (BoxDoor) stable.createDoor(room3, horseBox4, "box");
-		BoxDoor boxDoor4 = (BoxDoor) stable.createDoor(room2, horseBox3, "box");
-		BoxDoor boxDoor5 = (BoxDoor) stable.createDoor(room2, horseBox5, "box");
+		Room room6=stable.createRoom(3, 1);
+		room6.setSide(new Wall(KeyEvent.VK_UP));
+		room6.setSide(new Wall(KeyEvent.VK_RIGHT));			
+		room6.setSide(new Wall(KeyEvent.VK_DOWN));	
+
+
+		Stable.instance().addRoom(room6);
+
+		Room room7=stable.createRoom(2, 0);
+		room7.setSide(new Wall(KeyEvent.VK_UP));
+		room7.setSide(new Wall(KeyEvent.VK_RIGHT));			
+		room7.setSide(new Wall(KeyEvent.VK_LEFT));	
+		Stable.instance().addRoom(room7);
+
+		Room room8=stable.createRoom(1, 0);
+		room8.setSide(new Wall(KeyEvent.VK_UP));
+		room8.setSide(new Wall(KeyEvent.VK_RIGHT));			
+		room8.setSide(new Wall(KeyEvent.VK_LEFT));	
+		Stable.instance().addRoom(room8);
+
+		Room room9=stable.createRoom(2, 2);
+		room9.setSide(new Wall(KeyEvent.VK_LEFT));
+		room9.setSide(new Wall(KeyEvent.VK_RIGHT));			
+		room9.setSide(new Wall(KeyEvent.VK_DOWN));
+		Stable.instance().addRoom(room9);
+
+		Room room10=stable.createRoom(1, 2);
+		room10.setSide(new Wall(KeyEvent.VK_LEFT));
+		room10.setSide(new Wall(KeyEvent.VK_RIGHT));			
+		room10.setSide(new Wall(KeyEvent.VK_DOWN));
+		Stable.instance().addRoom(room10);
+		
+		
+		BoxDoor boxDoor1 = (BoxDoor) stable.createDoor(room3, room6, "box");
+		BoxDoor boxDoor2 = (BoxDoor) stable.createDoor(room3, room7, "box");
+		BoxDoor boxDoor3 = (BoxDoor) stable.createDoor(room3, room9, "box");
+		BoxDoor boxDoor4 = (BoxDoor) stable.createDoor(room2, room8, "box");
+		BoxDoor boxDoor5 = (BoxDoor) stable.createDoor(room2, room10, "box");
 
 		Door door1 = stable.createDoor(room1, room4, "door");
 		Door door2 = stable.createDoor(room1, room5, "door");
@@ -153,12 +196,12 @@ public class StablePanel extends JPanel {
 	public void builderConstruction() {
 
 		S_StableBuilder stable = new S_ConcreteStableBuilder();
-		
+
 		S_Director director = new S_Director(stable);
-		
+
 		director.buildStable();
-		
-		
+
+
 
 
 
@@ -174,7 +217,7 @@ public class StablePanel extends JPanel {
 		// YOUR CODE HERE
 		S_StablePrototypeFactory<Room> roomProt = new S_StablePrototypeFactory<Room>(new Room(0,0));  //TODO: Ok to do like this= with the parameters ?
 		S_StablePrototypeFactory<Wall> wallProt = new S_StablePrototypeFactory<Wall>(new Wall(0));  //TODO, OK to do this with parameters????
-		
+
 
 		Room room = null;
 		Wall wall;
@@ -216,18 +259,18 @@ public class StablePanel extends JPanel {
 					roomArray[i][j+1].setSide(door);
 				}
 				else {
-				boxDoor = boxDoorProt.clone();
-				boxDoor.move(roomArray[i][j], roomArray[i][j+1]);
-				roomArray[i][j].setSide(boxDoor);
-				roomArray[i][j+1].setSide(boxDoor);
+					boxDoor = boxDoorProt.clone();
+					boxDoor.move(roomArray[i][j], roomArray[i][j+1]);
+					roomArray[i][j].setSide(boxDoor);
+					roomArray[i][j+1].setSide(boxDoor);
 				}
 
 			}
 		}
 
 		//And then we need a corridor
-	
-	
+
+
 		roomArray[0][1].setSide(roomArray[1][1]);
 		roomArray[1][1].setSide(roomArray[0][1]);
 
@@ -235,9 +278,9 @@ public class StablePanel extends JPanel {
 		roomArray[2][1].setSide(roomArray[1][1]);
 
 
-		
+
 		//Here is Henriks crazy room, created by chrte
-		
+
 		room = roomProt.clone();
 		room.move(3, 1);
 		wall = wallProt.clone();
@@ -253,7 +296,7 @@ public class StablePanel extends JPanel {
 		wall.orientate(KeyEvent.VK_DOWN);
 		room.setSide(wall);
 		Stable.instance().addRoom(room);
-		
+
 		door = doorProto.clone();
 		door.move(roomArray[2][1], room);
 		roomArray[2][1].setSide(door);
