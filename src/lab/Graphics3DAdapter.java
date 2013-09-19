@@ -22,8 +22,7 @@ class Graphics3DAdapter extends AbstractGraphics implements Renderer {
 	@Override
 	public void putBody(AbstractList<Rectangle> body) {
 		Rectangle r;
-		java.awt.Graphics g = GamePanel.getBuffer();
-		g.setColor(snakeColor);
+		
 		Iterator<Rectangle> iterator = body.iterator();
 		while (iterator.hasNext()) {
 			r = iterator.next();
@@ -32,19 +31,14 @@ class Graphics3DAdapter extends AbstractGraphics implements Renderer {
 		}
 	}
 
-	@Override
-	public void setSnakeColor(Color color) {
-		this.snakeColor=color;
-		
-	}
 
 	@Override
 	public void putBonus(AbstractList<Rectangle> bonus) {
 
 		Rectangle r;
-		java.awt.Graphics g = GamePanel.getBuffer();
+		
 		Iterator<Rectangle> iterator = bonus.iterator();
-		g.setColor(bonusColor);
+		
 		while (iterator.hasNext()) {
 			r = iterator.next();
 //			g.fillRect(r.x, r.y, r.height, r.width);
@@ -58,11 +52,6 @@ class Graphics3DAdapter extends AbstractGraphics implements Renderer {
 	@Override
 	public void putBackground() {
 		graphics3D.printBase(this.backgroundColor);
-		
-	}
-	@Override
-	public void outside() {
-		super.outside();
 		
 	}
 

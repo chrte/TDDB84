@@ -227,8 +227,9 @@ public class Snake implements Runnable {
 	 * This method should be implemented during the labs.
 	 */
 	public void setShadowGraphics() {
-		if (renderer != null) renderer.stop();
+		
 		// YOUR CODE HERE
+		
 		renderer  = new Decorator(renderer);
 		renderer.setSnakeColor(Color.blue);
 		// Create the new renderer.

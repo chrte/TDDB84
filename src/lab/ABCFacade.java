@@ -1,11 +1,10 @@
 package lab;
 
-import java.awt.Color;
 import java.awt.Rectangle;
 import java.util.AbstractList;
 import java.util.ArrayList;
 
-public class ABCFacade implements Renderer {
+public class ABCFacade extends AbstractGraphics implements Renderer {
 
 	private ModuleA moduleA;
 	private ModuleB moduleB;
@@ -30,11 +29,6 @@ public class ABCFacade implements Renderer {
 
 	}
 
-	@Override
-	public void setSnakeColor(Color color) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void putBonus(AbstractList<Rectangle> bonus) {
@@ -43,11 +37,7 @@ public class ABCFacade implements Renderer {
 
 	}
 
-	@Override
-	public void outside() {
 
-
-	}
 
 	@Override
 	public void stop() {
