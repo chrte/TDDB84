@@ -1,9 +1,17 @@
 package lab;
 
+import java.awt.event.KeyEvent;
+
 public class S_StableFactory{
 	
 	protected Room createRoom(int x, int y) {
-		return new Room(x,y);
+		Room room = new Room(x,y);
+		room.setSide(new Wall(KeyEvent.VK_UP));
+		room.setSide(new Wall(KeyEvent.VK_LEFT));			
+		room.setSide(new Wall(KeyEvent.VK_DOWN));
+		room.setSide(new Wall(KeyEvent.VK_RIGHT));
+		Stable.instance().addRoom(room);
+		return room;
 	}
 	
 	protected Door createDoor(Room room1, Room room2, String type)
