@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 // YOUR CODE HERE
 // extends? implements?
-class Decorator implements Renderer {
+class Decorator extends AbstractGraphics implements Renderer {
 
 	private Renderer decorated;
 
