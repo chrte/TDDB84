@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.util.AbstractList;
 
 import javax.swing.JPanel;
 
@@ -51,6 +52,9 @@ public class ShapePanel extends JPanel {
 		} else if (paintIterator) {
 			// YOUR CODE HERE
 			//TODO
+			AbstractList<AbstractShape> list = null;
+			root.getListOfShapes(list);
+			
 			// Place the code to draw with the Iterator.
 			// END OF YOUR CODE
 		}
