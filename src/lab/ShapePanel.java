@@ -45,10 +45,12 @@ public class ShapePanel extends JPanel {
 			root.paint(g);
 		} else if (paintVisitor) {
 			// YOUR CODE HERE
-			// Place the code to draw with the Visitor.
+			// Place the code to draw with the Visitor.  //TODO
+			
 			// END OF YOUR CODE
 		} else if (paintIterator) {
 			// YOUR CODE HERE
+			//TODO
 			// Place the code to draw with the Iterator.
 			// END OF YOUR CODE
 		}

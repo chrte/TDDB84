@@ -118,7 +118,7 @@ public class ShapeFactory {
 
 			// YOUR CODE HERE
 			if(sibling!=null){
-			sibling.fixOverlap(r);  //only one sibling??
+			sibling.fixOverlap(r);  //only one sibling?? TODO: Do something more here??
 			}
 			// Remove the overlap caused by the bounding rectangle of
 			// the new shape.
