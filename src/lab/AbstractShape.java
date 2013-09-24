@@ -32,6 +32,14 @@ abstract public class AbstractShape {
 	abstract public void paint(Graphics g);
 
 	// YOUR CODE HERE
+	protected void fixOverlap(Rectangle r){
+//		Rectangle r = new Rectangle();
+//		r.x = shape.x;
+//		r.y = shape.y;
+//		r.width=shape.width;
+//		r.height=shape.height;
+		removeOverlap(r);
+	}
 	// removeOverlap is private and should stay private.
 	// You might want to implement a supplementary public method
 	// in order to facilitate the corresponding design pattern.
