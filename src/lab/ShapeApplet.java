@@ -27,7 +27,6 @@ public class ShapeApplet extends JApplet
 
 	private static final long serialVersionUID = 1L;
 	private ShapePanel panel;
-	int s;
 	private static JLabel outputLabel;
 
 	/**
