@@ -18,12 +18,12 @@ public class MoveCommand extends AbstractCommand {
 		l = lm.getMarkedLadyBird();
 		l.setGoal(goalX, goalY);
 		l.setState(new TurningState());
-		if(l.turn()){
-			l.setState(new GoingState());
-			if(l.go()){
-				l.setState(new StandingState());
-			}			
-		}
+//		if(l.turn()){
+//			l.setState(new GoingState());
+//			if(l.go()){
+//				l.setState(new StandingState());
+//			}			
+//		}
 	
 		
 	}

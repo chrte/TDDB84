@@ -4,7 +4,7 @@ public class TurningState extends AbstractState {
 
 	@Override
 	public void nextAction(LadyBird bird) {
-		bird.turn();
+		if(bird.turn()) bird.setState(new GoingState());
 	}
 
 }
