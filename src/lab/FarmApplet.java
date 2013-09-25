@@ -102,31 +102,35 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 	 */
 	public void keyPressed(KeyEvent evt) {
 		
+		LadyBirdManager manager = LadyBirdManager.instance();
+
 		switch (evt.getKeyChar()) {
 		case 'a':
 			addCommand(new AddCommand());
 			break;
 
 		case 'r':
-			addCommand(new RemoveCommand());
+			if (manager.getMarkedLadyBird() != null) {
+				addCommand(new RemoveCommand());
+			}
 			break;
 
 		case 'b':
-			// YOUR CODE HERE
-			// Write the code to make the marked ladybird bigger.
-			// END OF YOUR CODE
+			if (manager.getMarkedLadyBird() != null) {
+				addCommand(new BiggerCommand());
+			}
 			break;
 
 		case 's':
-			// YOUR CODE HERE
-			// Write the code to make the marked ladybird smaller.
-			// END OF YOUR CODE
+			if (manager.getMarkedLadyBird() != null) {
+				addCommand(new SmallerCommand());
+			}
 			break;
 
 		case 'c':
-			// YOUR CODE HERE
-			// Write the code to change to the color of the marked ladybird.
-			// END OF YOUR CODE
+			if (manager.getMarkedLadyBird() != null) {
+				addCommand(new ColorCommand());
+			}
 			break;
 
 		case 'u':
