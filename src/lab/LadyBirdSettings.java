@@ -17,6 +17,20 @@ public class LadyBirdSettings {
 	private Color color;
 	private Color dotColor;
 
+
+	private static LadyBirdSettings instance = null;	  
+
+	public static LadyBirdSettings getInstance(int halfLadyBirdSize,
+			Color color, Color dotColor) {
+		if(instance == null)
+		{
+			instance = new LadyBirdSettings( halfLadyBirdSize, color,  dotColor);
+		}
+		instance.halfLadyBirdSize = halfLadyBirdSize;
+		instance.color = color;
+		instance.dotColor = dotColor;
+		return instance;
+	}
 	/**
 	 * Calculates and sets values depending on the input.
 	 *
@@ -24,19 +38,19 @@ public class LadyBirdSettings {
 	 * @param color The body color.
 	 * @param dotColor The color of the dots and lines.
 	 */
-	public LadyBirdSettings(int halfLadyBirdSize,
-		Color color, Color dotColor) {
+	private LadyBirdSettings(int halfLadyBirdSize,
+			Color color, Color dotColor) {
 
 		this.halfLadyBirdSize = halfLadyBirdSize;
 		this.numberOfDots = halfLadyBirdSize / 10;
 		this.halfSizeOfSpot = (int)(Math.round(Point2D.distance(
-			(halfLadyBirdSize / 1.5) *
+				(halfLadyBirdSize / 1.5) *
 				Math.cos(Math.PI / (numberOfDots + 1)),
-			(halfLadyBirdSize / 1.5) *
+				(halfLadyBirdSize / 1.5) *
 				Math.sin(Math.PI / (numberOfDots + 1)),
-			(halfLadyBirdSize / 1.5) *
+				(halfLadyBirdSize / 1.5) *
 				Math.cos(Math.PI / (numberOfDots + 1) * 2),
-			(halfLadyBirdSize / 1.5) *
+				(halfLadyBirdSize / 1.5) *
 				Math.sin(Math.PI / (numberOfDots + 1) * 2))) / 2.2);
 		this.stepSize = halfLadyBirdSize / 3;
 		this.color = color;
@@ -46,7 +60,7 @@ public class LadyBirdSettings {
 	public LadyBirdSettings(LadyBirdSettings settings) {
 
 		this(settings.halfLadyBirdSize,
-			settings.color, settings.dotColor);
+				settings.color, settings.dotColor);
 	}
 
 	/**

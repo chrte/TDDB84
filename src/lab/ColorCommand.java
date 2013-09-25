@@ -14,8 +14,8 @@ public class ColorCommand extends AbstractCommand {
 		l = lm.getMarkedLadyBird();
 		oldColor = l.getColor();
 		oldDotColor= l.getDotColor();
-		l.setColors(new Color(5,30,201), new Color(205,83,101));
-
+		l.setColors(l.getDotColor(),l.getColor());
+		
 	}
 
 	@Override

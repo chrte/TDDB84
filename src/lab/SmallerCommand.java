@@ -12,8 +12,7 @@ public class SmallerCommand extends AbstractCommand {
 		l = lm.getMarkedLadyBird();
 		oldSize = l.getSize();
 		if(oldSize > 18)
-			l.setSize(oldSize-1);
-		
+			l.setSize(oldSize-1);		
 
 	}
 

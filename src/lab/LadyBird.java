@@ -25,8 +25,8 @@ public class LadyBird {
 
 	public LadyBird() {
 
-		settings = new LadyBirdSettings(31, Color.red, Color.black);
-
+		settings = LadyBirdSettings.getInstance(31, Color.red, Color.black);
+				
 		x = (int)Math.round(Math.random() * 400);
 		y = (int)Math.round(Math.random() * 400);
 		angle = Math.round(Math.random() * 2 * Math.PI);
@@ -218,7 +218,7 @@ public class LadyBird {
 	 */
 	public void setSize(int size) {
 
-		settings = new LadyBirdSettings(
+		settings = LadyBirdSettings.getInstance(
 			size, settings.getColor(), settings.getDotColor());
 
 		// YOUR CODE HERE
@@ -257,7 +257,7 @@ public class LadyBird {
 	 */
 	public void setColors(Color color, Color dotColor) {
 
-		settings = new LadyBirdSettings(
+		settings = LadyBirdSettings.getInstance(
 			settings.getHalfLadyBirdSize(), color, dotColor);
 
 		// YOUR CODE HERE
