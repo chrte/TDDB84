@@ -31,7 +31,6 @@ public class LadyBird {
 		y = (int)Math.round(Math.random() * 400);
 		angle = Math.round(Math.random() * 2 * Math.PI);
 		state = new NullState();
-
 		// YOUR CODE HERE
 		// You might want to add something here.
 	}

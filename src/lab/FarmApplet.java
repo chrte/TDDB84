@@ -99,18 +99,14 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 	 * Creates commands depending on which key was pressed.
 	 */
 	public void keyPressed(KeyEvent evt) {
-
+		
 		switch (evt.getKeyChar()) {
 		case 'a':
-			// YOUR CODE HERE
-			// Write the code to add a new ladybird.
-			// END OF YOUR CODE
+			addCommand(new AddCommand());
 			break;
 
 		case 'r':
-			// YOUR CODE HERE
-			// Write the code to remove the marked ladybird.
-			// END OF YOUR CODE
+			addCommand(new RemoveCommand());
 			break;
 
 		case 'b':
@@ -132,9 +128,7 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 			break;
 
 		case 'u':
-			// YOUR CODE HERE
-			// Write the code to undo the last command.
-			// END OF YOUR CODE
+			undoCommand();
 			break;
 		}
 
