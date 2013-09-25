@@ -35,6 +35,7 @@ public class SquareProxy extends AbstractSquare {
 		} else {
 			// YOUR CODE HERE
 			// Any additions?
+			
 			// END OF YOUR CODE
 
 			if (shape == null) {
