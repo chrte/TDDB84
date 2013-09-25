@@ -2,7 +2,7 @@ package lab;
 
 public class AddCommand extends AbstractCommand {
 
-	LadyBird l;
+	private LadyBird l;
 	@Override
 	public void Execute() {
 		LadyBirdManager lm = LadyBirdManager.instance();
