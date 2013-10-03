@@ -22,8 +22,9 @@ public class LadyBird {
 
 	private AbstractState state;
 	private LadyBirdSettings settings;
+	private ConcreteMediator mediator;
 
-	public LadyBird() {
+	public LadyBird(ConcreteMediator mediator) {
 
 		settings = LadyBirdSettings.getInstance(31, Color.red, Color.black);
 				
@@ -32,6 +33,7 @@ public class LadyBird {
 		angle = Math.round(Math.random() * 2 * Math.PI);
 		state = new NullState();
 		// YOUR CODE HERE
+		this.mediator=mediator;
 		// You might want to add something here.
 	}
 
@@ -142,6 +144,9 @@ public class LadyBird {
 				Math.cos(overLapAngle - Math.PI / 2)));
 			y = y + (int)(Math.round(overLap *
 				Math.sin(overLapAngle - Math.PI / 2)));
+			
+			
+			mediator.collide(this); //TODO: our code, ok??
 		}
 	}
 
@@ -198,7 +203,9 @@ public class LadyBird {
 
 			x = newX;
 			y = newY;
-
+			//OUR CODE
+			mediator.collide(this);
+			//END OUR CODE
 			return false;
 		}
 
@@ -211,6 +218,7 @@ public class LadyBird {
 	public void setState(AbstractState s) {
 
 		state = s;
+		
 	}
 
 	/**
@@ -222,6 +230,7 @@ public class LadyBird {
 			size, settings.getColor(), settings.getDotColor());
 
 		// YOUR CODE HERE
+		mediator.collide(this);
 		// You might want to add something here.
 	}
 
