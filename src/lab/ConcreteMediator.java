@@ -14,11 +14,9 @@ public class ConcreteMediator implements AbstractMediator {
 		for(int i = 0;i<list.size();i++){
 			if(!ladyBird.equals(list.get(i))){  //awful way??
 				list.get(i).collide(ladyBird);
-
-
+			
 			}
 		}
-
 	}
 
 	@Override

@@ -146,9 +146,10 @@ public class LadyBird {
 				Math.sin(overLapAngle - Math.PI / 2)));
 			
 			
-			mediator.collide(this); //TODO: our code, ok??
 		}
 	}
+	
+	
 
 	/**
 	 * Turns the ladybird slightly towards the goal.
