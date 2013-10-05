@@ -22,7 +22,7 @@ public class LadyBirdManager extends Thread {
 	private static JApplet applet;
 	private static LadyBirdManager instance;
 	
-	private ConcreteMediator mediator = new ConcreteMediator();
+	private S_ConcreteMediator mediator = new S_ConcreteMediator();
 
 	private LadyBirdManager() {
 		ladyBirds = new Vector<LadyBird>();

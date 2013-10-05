@@ -1,24 +1,21 @@
 package lab;
 
-public class SmallerCommand extends AbstractCommand {
+public class S_RemoveCommand extends AbstractCommand {
 
 	private LadyBird l;
-	private int oldSize;
-	
-
 	@Override
 	public void Execute() {
 		LadyBirdManager lm = LadyBirdManager.instance();
 		l = lm.getMarkedLadyBird();
-		oldSize = l.getSize();
-		if(oldSize > 18)
-			l.setSize(oldSize-1);		
+		lm.removeLadyBird(l);
 
 	}
 
 	@Override
 	public void Unexecute() {
-		l.setSize(oldSize);
+		LadyBirdManager lm = LadyBirdManager.instance();
+		lm.addLadyBird(l);
+
 	}
 
 }

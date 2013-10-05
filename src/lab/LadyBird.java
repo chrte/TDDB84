@@ -22,9 +22,9 @@ public class LadyBird {
 
 	private AbstractState state;
 	private LadyBirdSettings settings;
-	private ConcreteMediator mediator;
+	private S_ConcreteMediator mediator;
 
-	public LadyBird(ConcreteMediator mediator) {
+	public LadyBird(S_ConcreteMediator mediator) {
 
 		settings = LadyBirdSettings.getInstance(31, Color.red, Color.black);
 				

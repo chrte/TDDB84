@@ -88,7 +88,7 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 			} else {
 				// YOUR CODE HERE
 				
-				addCommand(new MoveCommand(evt.getX(), evt.getY()));
+				addCommand(new S_MoveCommand(evt.getX(), evt.getY()));
 				
 				// END OF YOUR CODE
 			}
@@ -106,30 +106,30 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 
 		switch (evt.getKeyChar()) {
 		case 'a':
-			addCommand(new AddCommand());
+			addCommand(new S_AddCommand());
 			break;
 
 		case 'r':
 			if (manager.getMarkedLadyBird() != null) {
-				addCommand(new RemoveCommand());
+				addCommand(new S_RemoveCommand());
 			}
 			break;
 
 		case 'b':
 			if (manager.getMarkedLadyBird() != null) {
-				addCommand(new BiggerCommand());
+				addCommand(new S_BiggerCommand());
 			}
 			break;
 
 		case 's':
 			if (manager.getMarkedLadyBird() != null) {
-				addCommand(new SmallerCommand());
+				addCommand(new S_SmallerCommand());
 			}
 			break;
 
 		case 'c':
 			if (manager.getMarkedLadyBird() != null) {
-				addCommand(new ColorCommand());
+				addCommand(new S_ColorCommand());
 			}
 			break;
 

@@ -1,6 +1,6 @@
 package lab;
 
-public class AddCommand extends AbstractCommand {
+public class S_AddCommand extends AbstractCommand {
 
 	private LadyBird l;
 	@Override

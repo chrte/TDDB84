@@ -2,7 +2,7 @@ package lab;
 
 import java.awt.Color;
 
-public class ColorCommand extends AbstractCommand {
+public class S_ColorCommand extends AbstractCommand {
 
 	private LadyBird l;
 	private Color oldColor;

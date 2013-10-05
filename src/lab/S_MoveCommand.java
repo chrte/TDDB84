@@ -1,6 +1,6 @@
 package lab;
 
-public class MoveCommand extends AbstractCommand {
+public class S_MoveCommand extends AbstractCommand {
 	
 	private int goalX;
 	private int goalY;
@@ -8,7 +8,7 @@ public class MoveCommand extends AbstractCommand {
 	private int oldY;
 	private LadyBird l;
 	
-	public MoveCommand(int x, int y){
+	public S_MoveCommand(int x, int y){
 		goalX=x;
 		goalY=y;		
 	}
@@ -21,7 +21,7 @@ public class MoveCommand extends AbstractCommand {
 		oldX = l.getX();
 		oldY = l.getY();
 		l.setGoal(goalX, goalY);
-		l.setState(new TurningState());
+		l.setState(new S_TurningState());
 //		if(l.turn()){
 //			l.setState(new GoingState());
 //			if(l.go()){
@@ -37,7 +37,7 @@ public class MoveCommand extends AbstractCommand {
 		LadyBirdManager lm = LadyBirdManager.instance();
 		l = lm.getMarkedLadyBird();
 		l.setGoal(oldX, oldY);
-		l.setState(new TurningState());
+		l.setState(new S_TurningState());
 	}
 
 }

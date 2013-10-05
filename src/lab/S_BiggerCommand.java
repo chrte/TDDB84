@@ -1,7 +1,7 @@
 package lab;
 
 
-public class BiggerCommand extends AbstractCommand {
+public class S_BiggerCommand extends AbstractCommand {
 
 	private LadyBird l;
 	private int oldSize;

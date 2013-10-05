@@ -2,10 +2,10 @@ package lab;
 
 import java.util.ArrayList;
 
-public class ConcreteMediator implements AbstractMediator {
+public class S_ConcreteMediator implements S_AbstractMediator {
 
 	private ArrayList<LadyBird> list;
-	public ConcreteMediator(){
+	public S_ConcreteMediator(){
 		list = new ArrayList<>();
 	}
 	@Override
