@@ -71,7 +71,8 @@ public class SquareProxy extends Square  {
 		if (open) {
 			// YOUR CODE HERE
 			// Any changes?
-			g.setColor(Color.orange);
+			g.setColor(new Color((255 - getDepth() * 20),
+					(153 - getDepth() * 20), (0 + getDepth() * 20)));
 			g.fillRect(getX(), getY(), getWidth(), getHeight());
 			// END OF YOUR CODE
 		} else {
@@ -96,8 +97,7 @@ public class SquareProxy extends Square  {
 	 * Adds the proxy to the list of shapes.
 	 * Only adds the children if the proxy is open.
 	 */
-	public AbstractList<AbstractShape>
-		getListOfShapes(AbstractList<AbstractShape> list) {
+	public AbstractList<AbstractShape> getListOfShapes(AbstractList<AbstractShape> list) {
 
 		// YOUR CODE HERE
 		list.add(this);
