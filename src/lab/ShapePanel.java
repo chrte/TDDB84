@@ -47,11 +47,13 @@ public class ShapePanel extends JPanel {
 		} else if (paintVisitor) {
 			// YOUR CODE HERE
 			// Place the code to draw with the Visitor.  //TODO
+			S_ConcreteVisitor visitor = new S_ConcreteVisitor(g);
+			root.accept(visitor);
 			
 			// END OF YOUR CODE
 		} else if (paintIterator) {
 			// YOUR CODE HERE
-			//TODO
+			
 			S_ConcreteIterator iterator = new S_ConcreteIterator(root);
 			while (!iterator.isDone())  {
 				AbstractShape shape = (AbstractShape) iterator.currentItem();
