@@ -109,7 +109,9 @@ public class ShapePanel extends JPanel {
 		int totalNumber = 0;
 
 		// YOUR CODE HERE
-		// Place the code to count the shapes using the Visitor.
+		S_VisitorCounter visitorCounter = new S_VisitorCounter();
+		root.accept(visitorCounter);
+		totalNumber = visitorCounter.getNrOfVisits();
 		// END OF YOUR CODE
 
 		ShapeApplet.setOutputText(
@@ -124,7 +126,11 @@ public class ShapePanel extends JPanel {
 		int totalNumber = 0;
 
 		// YOUR CODE HERE
-		// Place the code to count the shapes using the Iterator.
+		S_ConcreteIterator iterator = new S_ConcreteIterator(root);
+		while (!iterator.isDone()){
+			totalNumber++;
+			iterator.next();
+		}
 		// END OF YOUR CODE
 
 		ShapeApplet.setOutputText(
