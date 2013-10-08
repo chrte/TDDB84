@@ -29,4 +29,5 @@ public abstract class AbstractVisitor {
 
 	// YOUR CODE HERE
 	// May be something else should be added?
+	public abstract void visit(SquareProxy sp);
 }

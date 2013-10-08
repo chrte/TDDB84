@@ -32,5 +32,10 @@ public class S_ConcreteVisitor extends AbstractVisitor {
 		t.paint(g);
 		
 	}
+	@Override
+	public void visit(SquareProxy sp) {
+		sp.paint(g);
+		
+	}
 
 }

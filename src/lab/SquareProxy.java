@@ -3,17 +3,22 @@ package lab;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.AbstractList;
+import java.util.Iterator;
 
 /**
  * This is the class where the students implements the proxy for the square.
  *
  * @author Peter Sunnergren
  */
-public class SquareProxy extends AbstractSquare {
+public class SquareProxy extends Square  {
 
 	private boolean open = true;
 
 	// YOUR CODE HERE
+	private Square square;
+	public SquareProxy(){
+		square=new Square();
+	}
 	// Any missing methods?
 	// END OF YOUR CODE
 
@@ -35,7 +40,18 @@ public class SquareProxy extends AbstractSquare {
 		} else {
 			// YOUR CODE HERE
 			// Any additions?
-			
+			Iterator<AbstractShape> iter = children.iterator();
+
+			while (iter.hasNext()) {
+				AbstractShape s = iter.next();
+				s = s.getMarkedShape(cx, cy);
+				if (null != s) {
+					/**
+					 * To make sure that all children is checked.
+					 */
+					shape = s;
+				}
+			}
 			// END OF YOUR CODE
 
 			if (shape == null) {
@@ -70,6 +86,10 @@ public class SquareProxy extends AbstractSquare {
 	public void paintChildren(Graphics g) {
 
 		// YOUR CODE HERE
+		if(open){
+			square.paintChildren(g);
+		}
+
 	}
 
 	/**
@@ -80,6 +100,10 @@ public class SquareProxy extends AbstractSquare {
 		getListOfShapes(AbstractList<AbstractShape> list) {
 
 		// YOUR CODE HERE
+		list.add(this);
+		if (open){
+			list.addAll(square.children);
+		}
 		// END OF YOUR CODE
 
 		return list;
@@ -91,6 +115,12 @@ public class SquareProxy extends AbstractSquare {
 	public void accept(AbstractVisitor v) {
 
 		// YOUR CODE HERE
+		v.visit(this);
+		if (open){
+			Iterator<AbstractShape> iter = children.iterator();
+			while (iter.hasNext()) iter.next().accept(v);
+		}
+		
 	}
 
 	/**
@@ -99,6 +129,9 @@ public class SquareProxy extends AbstractSquare {
 	public void addChild(AbstractShape child) {
 
 		// YOUR CODE HERE
+		if (open){
+			square.children.add(child);
+		}
 	}
 
 	/**
@@ -107,7 +140,10 @@ public class SquareProxy extends AbstractSquare {
 	public boolean hasChildren() {
 
 		// YOUR CODE HERE
-		return false;
+		if(open){
+			return square.hasChildren();
+		}
+		else return false;
 		// END OF YOUR CODE
 	}
 
@@ -117,6 +153,9 @@ public class SquareProxy extends AbstractSquare {
 	public AbstractShape getLastChild() {
 
 		// YOUR CODE HERE
+		if(open){
+			return square.getLastChild();
+		}
 		return null;
 		// END OF YOUR CODE
 	}
