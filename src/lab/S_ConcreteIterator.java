@@ -1,31 +1,41 @@
 package lab;
 
 
+import java.util.ArrayList;
+
+
 
 public class S_ConcreteIterator extends AbstractIterator {
-
+	private int index = 0;
+	private ArrayList<AbstractShape> list;
+	
+	public S_ConcreteIterator(Square root){
+		list = new ArrayList<AbstractShape>();
+		root.getListOfShapes(list);
+	}
 	@Override
 	public void first() {
-		// TODO Auto-generated method stub
+		index=0;
 		
 	}
 
 	@Override
 	public void next() {
-		// TODO Auto-generated method stub
+		if(index<list.size()){
+			index++;
+		}
 		
 	}
 
 	@Override
 	public boolean isDone() {
-		// TODO Auto-generated method stub
-		return false;
+		if (index>=list.size()) return true;
+		else return false;
 	}
 
 	@Override
 	public Object currentItem() {
-		// TODO Auto-generated method stub
-		return null;
+		return list.get(index);
 	}
 
 }

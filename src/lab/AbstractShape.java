@@ -38,7 +38,7 @@ abstract public class AbstractShape {
 			return;
 		}
 		else{
-			removeOverlap(r);
+			s.removeOverlap(r);
 			fixOverlap(r,s.getSibling());
 		}
 	}

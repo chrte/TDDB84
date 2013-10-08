@@ -52,8 +52,12 @@ public class ShapePanel extends JPanel {
 		} else if (paintIterator) {
 			// YOUR CODE HERE
 			//TODO
-			AbstractList<AbstractShape> list = null;
-			root.getListOfShapes(list);
+			S_ConcreteIterator iterator = new S_ConcreteIterator(root);
+			while (!iterator.isDone())  {
+				AbstractShape shape = (AbstractShape) iterator.currentItem();
+				shape.paint(g);
+				iterator.next();
+			}
 			
 			// Place the code to draw with the Iterator.
 			// END OF YOUR CODE
