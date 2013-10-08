@@ -117,8 +117,11 @@ public class ShapeFactory {
 				(parent.getHeight() - r.height)) + parent.getY();
 
 			// YOUR CODE HERE
-			if(sibling!=null){
-			sibling.fixOverlap(r);  //only one sibling?? TODO: Do something more here??
+			if (s.getParent().hasChildren()) {
+				
+				s.setSibling(s.getParent().getLastChild());
+				s.fixOverlap(r, s.getSibling());
+				
 			}
 			// Remove the overlap caused by the bounding rectangle of
 			// the new shape.
