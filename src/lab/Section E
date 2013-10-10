@@ -1,0 +1,5 @@
+Section E:
+When adding a new class, the iterator implementation didn't change at all, because it only stores teh shapes as abstract shapes, and don't take the type of shape in count. 
+When adding a new class for the visitor pattern, we needed to change both the abstract class and the implementation to be able to "visit" the new class. 
+
+When adding a counter, we needed to create a complete new class for the visitor pattern, but for the iterator pattern, we didn't.

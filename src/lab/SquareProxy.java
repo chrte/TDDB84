@@ -40,10 +40,10 @@ public class SquareProxy extends Square  {
 		} else {
 			// YOUR CODE HERE
 			// Any additions?
-			Iterator<AbstractShape> iter = children.iterator();
+			Iterator<AbstractShape> iterator = square.children.iterator();
 
-			while (iter.hasNext()) {
-				AbstractShape s = iter.next();
+			while (iterator.hasNext()) {
+				AbstractShape s = iterator.next();
 				s = s.getMarkedShape(cx, cy);
 				if (null != s) {
 					/**
@@ -74,6 +74,7 @@ public class SquareProxy extends Square  {
 			g.setColor(new Color((255 - getDepth() * 20),
 					(153 - getDepth() * 20), (0 + getDepth() * 20)));
 			g.fillRect(getX(), getY(), getWidth(), getHeight());
+			this.paintChildren(g);
 			// END OF YOUR CODE
 		} else {
 			g.setColor(Color.black);
@@ -117,7 +118,7 @@ public class SquareProxy extends Square  {
 		// YOUR CODE HERE
 		v.visit(this);
 		if (open){
-			Iterator<AbstractShape> iter = children.iterator();
+			Iterator<AbstractShape> iter = square.children.iterator();
 			while (iter.hasNext()) iter.next().accept(v);
 		}
 		
