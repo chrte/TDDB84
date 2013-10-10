@@ -2,13 +2,14 @@ package lab;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.util.Observable;
 
 /**
  * Contains the settings of a ladybird.
  *
  * @author Peter Sunnergren
  */
-public class LadyBirdSettings {
+public class LadyBirdSettings extends Observable {
 
 	private int halfLadyBirdSize;
 	private int halfSizeOfSpot;
@@ -20,16 +21,27 @@ public class LadyBirdSettings {
 
 	private static LadyBirdSettings instance = null;	  
 
-	public static LadyBirdSettings getInstance(int halfLadyBirdSize,
-			Color color, Color dotColor) {
+	public static LadyBirdSettings getInstance() {
 		if(instance == null)
 		{
-			instance = new LadyBirdSettings( halfLadyBirdSize, color,  dotColor);
+			instance = new LadyBirdSettings(31, Color.red, Color.black);
 		}
-		instance.halfLadyBirdSize = halfLadyBirdSize;
-		instance.color = color;
-		instance.dotColor = dotColor;
+		
 		return instance;
+	}
+	
+	protected void setColor(Color color, Color dotColor){
+		this.color=color;
+		this.dotColor=dotColor;
+		this.setChanged();
+		this.notifyObservers();
+		
+	}
+	
+	protected void setSize(int halfLadyBirdSize){
+		this.halfLadyBirdSize=halfLadyBirdSize;
+		this.setChanged();
+		this.notifyObservers();
 	}
 	/**
 	 * Calculates and sets values depending on the input.

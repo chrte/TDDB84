@@ -5,13 +5,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * The class representing a ladybird.
  *
  * @author Peter Sunnergren
  */
-public class LadyBird {
+public class LadyBird implements Observer {
 
 	private double angle = 0.0;
 	private int x;
@@ -26,7 +28,7 @@ public class LadyBird {
 
 	public LadyBird(S_ConcreteMediator mediator) {
 
-		settings = LadyBirdSettings.getInstance(31, Color.red, Color.black);
+		settings = LadyBirdSettings.getInstance();
 				
 		x = (int)Math.round(Math.random() * 400);
 		y = (int)Math.round(Math.random() * 400);
@@ -227,8 +229,8 @@ public class LadyBird {
 	 */
 	public void setSize(int size) {
 
-		settings = LadyBirdSettings.getInstance(
-			size, settings.getColor(), settings.getDotColor());
+		settings = LadyBirdSettings.getInstance();
+		settings.setSize(size);
 
 		// YOUR CODE HERE
 		mediator.collide(this);
@@ -267,8 +269,8 @@ public class LadyBird {
 	 */
 	public void setColors(Color color, Color dotColor) {
 
-		settings = LadyBirdSettings.getInstance(
-			settings.getHalfLadyBirdSize(), color, dotColor);
+		settings = LadyBirdSettings.getInstance();
+		settings.setColor(color, dotColor);
 
 		// YOUR CODE HERE
 		// You might want to add something here.
@@ -300,5 +302,13 @@ public class LadyBird {
 
 		goalX = x;
 		goalY = y;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		settings=LadyBirdSettings.getInstance();
+		this.setColors(settings.getColor(), settings.getDotColor());
+		this.setSize(settings.getHalfLadyBirdSize());
+		
 	}
 }
